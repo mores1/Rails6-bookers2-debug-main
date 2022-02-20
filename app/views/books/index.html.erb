@@ -1,14 +1,8 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <% if @nbook.errors.any? %>
-  <%= @nbook.errors.count %>error prohibited this obj from being saved:
-  <ul>
-    <% @nbook.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+
+      <%= render 'layouts/errors', obj: @nbook %>
 
       <h2>User info</h2>
       <%= render 'users/info', user: current_user %>
@@ -16,7 +10,7 @@
       <%= render 'form', nbook: @nbook %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <h2>Books</h2
+      <h2>Books</h2>
       <%= render 'index', books: @books %>
     </div>
   </div>
