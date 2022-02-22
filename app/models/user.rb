@@ -27,22 +27,34 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
   
-  
     # フォローする
   def follow(user)
     relationships.create(followed_id: user.id)
   end
-
   # フォローを外す
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy
   end
-
   # すでにフォローしているのか確認
   def following?(user)
     followings.include?(user)
   end
 
+  
+  #検索機能
+  def self.looks(seach, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?", "%#{word}")
+    elsif search == User.where("name LIKE?", "%#{word}%")
+      @user = User.where("name LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end
+  end
   
   
   def get_profile_image
