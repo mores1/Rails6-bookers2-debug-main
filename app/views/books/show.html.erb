@@ -25,18 +25,6 @@
           <% end %>
         </tr>
       </table>
-            <!--<div>-->
-            <!--  <td>コメント件数：%= @book.book_comments.count %></td>-->
-              
-            <!--  % @book.book_comments.each do |book_comment| %>-->
-            <!--    <td>%= image_tag book_comment.user.get_profile_image(100,100) %></td>-->
-            <!--    %= book_comment.user.name %>-->
-            <!--    %= book_comment.created_at.strftime('%Y/%m/%d') %>%= book_comment.comment %>-->
-            <!--    % if book_comment.user == current_user %>-->
-            <!--      %= link_to "Destroy", book_book_comment_path(book_comment.book, book_comments),method: :delete %>-->
-            <!--    % end %>  -->
-            <!--  % end %>-->
-            <!--</div>-->
       <%= render 'book_comments/index', book: @book %>      
       <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
       
