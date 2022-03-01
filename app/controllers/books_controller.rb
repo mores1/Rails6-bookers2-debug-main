@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.all
+    @books = Book.all.sort {|a,b| b.favorites.count <=> a.favorites.count }
   end
 
   def create
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
     end
   end
 
-  def destro
+  def destroy
     @book.destroy
     redirect_to books_path
   end
