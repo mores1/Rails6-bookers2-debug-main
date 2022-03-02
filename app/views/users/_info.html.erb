@@ -26,7 +26,21 @@
     <% end %>
   <% end %>
 </div>
-　
+<div>
+<% unless user.id == current_user.id %>
+  <% if @isRoom == true %>
+    <p class="user-show-room"><%= link_to 'チャットへ', rooms_path(@roomId) %></p>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, value: user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+
 <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
     <i class="fas fa-user-cog"></i>
