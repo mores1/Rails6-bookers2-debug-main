@@ -9,6 +9,14 @@ class Book < ApplicationRecord
   
   is_impressionable
   
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+  
+  scope :created_thisweek, -> { where(created_at: Time.zone.now.all_week) }
+  scope :created_lastweek, -> { where(created_at: 1.week.ago.all_week) }
+  
+  
+  
 
   def self.looks(search, word)
     if search == "perfect_match"
