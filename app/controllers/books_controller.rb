@@ -14,13 +14,6 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all.sort {|a,b| b.favorites.where(created_at: Time.current.all_week).size <=> a.favorites.where(created_at: Time.current.all_week).size}
-    @today_book = @books.created_today
-    @yesterday_book = @books.created_yesterday
-    @sixdayago_book = @books.created_6dayago
-    @fivedayago_book = @books.created_5dayago
-    @fourdayago_book = @books.created_4dayago
-    @threedayago_book = @books.created_3dayago
-    @twodayago_book = @books.created_2dayago
   end
 
   def create
