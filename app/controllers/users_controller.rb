@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     @book = Book.new
     @today_book = @books.created_today
     @yesterday_book = @books.created_yesterday
-    @thisweek_book = @books.created_thisweek
-    @lastweek_book = @books.created_lastweek
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
   end
 
 
