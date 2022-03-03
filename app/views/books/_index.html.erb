@@ -8,6 +8,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,17 @@
         </td>        
         <td class="comment-count"><%= link_to "コメント数：#{book.book_comments.count}", book_path(book.id) %></td>
         <td>閲覧数: <%= book.impressionist_count %></td>
+        <td>
+          <script>
+  $('.movie-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+        </td>
       </tr>
     <% end %>
   </tbody>

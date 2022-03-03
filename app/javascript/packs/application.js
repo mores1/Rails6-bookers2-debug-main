@@ -6,6 +6,8 @@
 
 //= require jquery
 //= require rails-ujs
+//= render jquery.raty.js
+
 
 
 import Rails from "@rails/ujs"
